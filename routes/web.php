@@ -22,3 +22,14 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/filter', 'HomeController@filter')->name('filter');
 Route::resource('channel', 'ChannelController');
+
+Route::group(['middleware'=>'superAdmin'],function (){
+    //categories
+    Route::get('/admin/categories','CategoriesController@index')->name('admin.categories.index');
+    Route::get('/admin/categories/create','CategoriesController@create')->name('admin.categories.create');
+    Route::post('/admin/categories/store','CategoriesController@store')->name('admin.categories.store');
+    Route::get('/admin/categories/{user}/edit','CategoriesController@edit')->name('admin.categories.edit');
+    Route::put('/admin/categories/{user}','CategoriesController@update')->name('admin.categories.update');
+    Route::delete('/admin/categories/{user}','CategoriesController@destroy');
+
+});

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Http\Requests\CreateCategoryRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class CategoriesController extends Controller
 {
@@ -15,7 +17,7 @@ class CategoriesController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return view('index',compact('categories'));
+        return view('categories.index',compact('categories'));
     }
 
 
@@ -25,10 +27,10 @@ class CategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateCategoryRequest $request)
     {
         Category::create($request->all());
-        return redirect('tosomething');
+        return redirect('/');
     }
 
 
@@ -42,7 +44,7 @@ class CategoriesController extends Controller
     public function edit($id)
     {
         $category = Category::findOrFail($id);
-        return view('edit',compact('category'));
+        return view('categories.edit',compact('category'));
     }
 
     /**
@@ -56,7 +58,7 @@ class CategoriesController extends Controller
     {
         Category::findOrFail($id)->update($request->all());
         Session::flash('update_category','category updated');
-        return redirect('something');
+        return redirect('/');
 
 
     }
@@ -71,6 +73,6 @@ class CategoriesController extends Controller
     {
         Category::findOrFail($id)->delete();
         Session::flash('deleted_category','Category Deleted');
-        return redirect('somewhere');
+        return redirect('/');
     }
 }

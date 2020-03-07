@@ -46,4 +46,10 @@ class User extends Authenticatable
     public function channels(){
         return $this->hasMany('App\Channel');
     }
+    public function isSuperAdmin(){
+        if ($this->role->name == 'SuperAdmin'){
+            return true;
+        }
+        return false;
+    }
 }

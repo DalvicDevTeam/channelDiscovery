@@ -43,7 +43,7 @@ class HomeController extends Controller
                     ->Where('members', '<', $maxrange)
                     ->orwhereIn('category_id', $categories)
                     ->get();
-        echo $channels;
+//        echo $channels;
         $categories = Category::all();
         return view('home', compact('channels', 'categories'));
     }
