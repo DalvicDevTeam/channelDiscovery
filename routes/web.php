@@ -22,3 +22,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/filter', 'HomeController@filter')->name('filter');
 Route::resource('channel', 'ChannelController');
+Route::resource('category', 'CategoriesController');
