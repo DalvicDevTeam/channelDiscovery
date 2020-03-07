@@ -32,7 +32,7 @@ class ChannelController extends Controller
      */
     public function create()
     {
-        $categories = Category::get()->pluck('name','id')->all();
+        $categories = Category::all();
         return view('layouts.pages.createchannel',compact('categories'));
     }
 
@@ -44,21 +44,25 @@ class ChannelController extends Controller
      */
     public function store(CreateChannelRequest $request)
     {
-        $user = Auth::user();
+        // $user = Auth::user();
         $channel = new Channel;
-        $channel->user_id = $request->user()->id;
-        $channel->category_id = $request->category()->id;
+        $channel->user_id = $request->user_id;
+        echo($request);
+        $channel->category_id = $request->cat_id;
 
         // $file = $request->imgurl;
         //        $photo = Photo::create(['path'=>$file]);
         //        $channel->photo_id = $photo->id;
 
-
-        if ($file = $request->img){
-            $name = time().$file->getClientOriginalName();
-            $file->move('images/channelpp',$name);
-            $photo = Photo::create(['path'=>$name]);
-            $channel->photo_id= $photo->id;
+        if ($request->hasFile('img')){
+            $image = $request->file('img');
+            $name = time().$image->getClientOriginalName();
+            $image->move('images/channelpp',$name);
+            $photo = Photo::create(['path'=>'http://localhost:8000/images/channelpp/'.$name]);
+            $channel->photo_id = $photo->id;
+        }else{
+            echo("no file");
+            return 0;
         }
         $channel->title = $request->title;
         $channel->description = $request->description;
@@ -66,8 +70,10 @@ class ChannelController extends Controller
         $channel->contact_name = $request->contact_name;
         $channel->contact_phone = $request->contact_phone;
         $channel->contact_address = $request->contact_address;
-
+        $channel->username = $request->username;
         $channel->save();
+
+        // print_r($channel);
 
         return new ChannelResource($channel);
 

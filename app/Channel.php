@@ -15,8 +15,6 @@ class Channel extends Model
         'contact_name',
         'contact_phone',
         'contact_address',
-
-
     ];
 
     public function user(){

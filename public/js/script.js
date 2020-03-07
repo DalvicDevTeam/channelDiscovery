@@ -27,6 +27,8 @@ $ownerName = $("#channel_owner_name");
 $ownerPhone = $("#channel_owner_phone");
 $ownerAddress = $("#channel_owner_address");
 $addChannelBtn = $("#add-channel-btn");
+$userId = $("#user_id");
+$category = $("#categories");
 
 $addChannelForm.on("submit", (e) => {
 // $addChannelBtn.on("click", () => {
@@ -41,9 +43,16 @@ $addChannelForm.on("submit", (e) => {
         ownername: $ownerName.val(),
         owneraddress: $ownerAddress.val(),
         ownerphone: $ownerPhone.val(),
-        username: $userName.val()
+        username: $userName.val(),
+        category: $category.val(),
+        userid: $userId.val()
     },(data, status) => {
-        console.log(status);
-        console.log(data);
+        if(status == "success" && data == valid){
+
+        }
     });
 });
+
+function load(){
+    console.log('loading');
+}
