@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Channel;
+use App\Http\Resources\ChannelResource;
 use Illuminate\Http\Request;
 
 class ChannelController extends Controller
@@ -13,7 +15,10 @@ class ChannelController extends Controller
      */
     public function index()
     {
-        //
+        //get channels
+        $channels = Channel::paginate(15);
+        //return collection of article as a resource
+        return ChannelResource::collection($channels);
     }
 
     /**

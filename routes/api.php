@@ -17,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('channels','ChannelController@show');
+Route::get('channel/{id}','ChannelController@show');
+Route::post('channel','ChannelController@store');
+Route::put('channel/{id}','ChannelController@update');
+Route::delete('channel/{id}','ChannelController@destroy');
+
+
