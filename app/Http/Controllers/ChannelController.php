@@ -23,7 +23,7 @@ class ChannelController extends Controller
      */
     public function create()
     {
-        //
+        return view('layouts.pages.createchannel');
     }
 
     /**

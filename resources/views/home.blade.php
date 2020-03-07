@@ -51,7 +51,7 @@
                             <h5 class="font-weight-bold">Tikvah Ethiopia</h5>
                             <p class="m-0">Addis Ababa, Ethiopia @tsegabwolde, 0919743630</p>
                             <p class="m-0">557952 members</p>
-                            <p class="m-0 text-primary">@tikvaheth</p>
+                            <a class="m-0 text-primary" href="https://t.me/tikvaheth" target="_blank">@tikvaheth</a>
                         </div>
                     </div>
                     <hr class="mb-0">
@@ -65,7 +65,7 @@
                             <h5 class="font-weight-bold">Tikvah Ethiopia</h5>
                             <p class="m-0">Addis Ababa, Ethiopia @tsegabwolde, 0919743630</p>
                             <p class="m-0">557952 members</p>
-                            <p class="m-0 text-primary">@tikvaheth</p>
+                            <a class="m-0 text-primary" href="https://t.me/tikvaheth" target="_blank">@tikvaheth</a>
                         </div>
                     </div>
                     <hr class="mb-0">
@@ -79,7 +79,7 @@
                             <h5 class="font-weight-bold">Tikvah Ethiopia</h5>
                             <p class="m-0">Addis Ababa, Ethiopia @tsegabwolde, 0919743630</p>
                             <p class="m-0">557952 members</p>
-                            <p class="m-0 text-primary">@tikvaheth</p>
+                            <a class="m-0 text-primary" href="https://t.me/tikvaheth" target="_blank">@tikvaheth</a>
                         </div>
                     </div>
                 </div>
