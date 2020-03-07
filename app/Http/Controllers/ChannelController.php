@@ -33,7 +33,7 @@ class ChannelController extends Controller
     public function create()
     {
         $categories = Category::get()->pluck('name','id')->all();
-        return view('create',compact('categories'));
+        return view('layouts.pages.createchannel',compact('categories'));
     }
 
     /**
