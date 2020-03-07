@@ -49,11 +49,17 @@ class ChannelController extends Controller
         $channel->user_id = $request->user()->id;
         $channel->category_id = $request->category()->id;
 
-        $file = $request->imgurl;
-        $photo = Photo::create(['path'=>$file]);
-        $channel->photo_id = $photo->id;
+        // $file = $request->imgurl;
+        //        $photo = Photo::create(['path'=>$file]);
+        //        $channel->photo_id = $photo->id;
 
 
+        if ($file = $request->img){
+            $name = time().$file->getClientOriginalName();
+            $file->move('images/channelpp',$name);
+            $photo = Photo::create(['path'=>$name]);
+            $channel->photo_id= $photo->id;
+        }
         $channel->title = $request->title;
         $channel->description = $request->description;
         $channel->members = $request->members;
