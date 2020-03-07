@@ -47,8 +47,11 @@ $addChannelForm.on("submit", (e) => {
         category: $category.val(),
         userid: $userId.val()
     },(data, status) => {
-        if(status == "success" && data == valid){
-
+        if(status == "success" && data == 'valid'){
+            console.log('success');
+            window.location.href = "http://localhost:8000/home";
+        }else{
+            alert("something went wrong");
         }
     });
 });

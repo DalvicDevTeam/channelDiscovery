@@ -47,7 +47,7 @@ class ChannelController extends Controller
         // $user = Auth::user();
         $channel = new Channel;
         $channel->user_id = $request->user_id;
-        echo($request);
+        // echo($request);
         $channel->category_id = $request->cat_id;
 
         // $file = $request->imgurl;
@@ -88,7 +88,6 @@ class ChannelController extends Controller
     public function show($id)
     {
         $channel = Channel::findOrFail($id);
-
         return new ChannelResource($channel);
     }
 
@@ -103,8 +102,6 @@ class ChannelController extends Controller
         $channel = Channel::findOrFail($id);
         $categories = Category::get()->pluck('name','id')->all();
         return view('edit',compact('channel',$categories));
-
-
     }
 
     /**

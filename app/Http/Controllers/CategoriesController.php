@@ -18,6 +18,7 @@ class CategoriesController extends Controller
     {
         $categories = Category::all();
         return view('categories.index',compact('categories'));
+
     }
 
 
@@ -58,7 +59,9 @@ class CategoriesController extends Controller
     {
         Category::findOrFail($id)->update($request->all());
         Session::flash('update_category','category updated');
+
         return redirect('/');
+
 
 
     }
