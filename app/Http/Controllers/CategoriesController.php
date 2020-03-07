@@ -2,29 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+/**
+* Display a listing of the resource.
+*
+* @return \Illuminate\Http\Response
+*/
     public function index()
     {
-        //
+        $categories = Category::all();
+        return view('index',compact('categories'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -34,19 +27,11 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Category::create($request->all());
+        return redirect('tosomething');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -56,7 +41,8 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view('edit',compact('category'));
     }
 
     /**
@@ -68,7 +54,11 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Category::findOrFail($id)->update($request->all());
+        Session::flash('update_category','category updated');
+        return redirect('something');
+
+
     }
 
     /**
@@ -79,6 +69,8 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Category::findOrFail($id)->delete();
+        Session::flash('deleted_category','Category Deleted');
+        return redirect('somewhere');
     }
 }
