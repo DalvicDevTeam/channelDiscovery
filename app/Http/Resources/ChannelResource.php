@@ -18,6 +18,7 @@ class ChannelResource extends JsonResource
             'id' => $this->id,
             'user_id' => $this->user_id,
             'category_id' => $this->category_id,
+            'category' => $this->category->name,
             'imgurl' => $this->photo->path,
             'description' => $this->description,
             'title' => $this->title,
@@ -25,6 +26,7 @@ class ChannelResource extends JsonResource
             'contact_name' => $this->contact_name,
             'username' => $this->username,
             'contact_address' => $this->contact_address,
+            'contact_phone' => $this->contact_phone,
         ];
     }
 }

@@ -21,6 +21,9 @@ class CategoriesController extends Controller
 
     }
 
+    public function create(){
+        return view('layouts.pages.createcategory');
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -31,7 +34,7 @@ class CategoriesController extends Controller
     public function store(CreateCategoryRequest $request)
     {
         Category::create($request->all());
-        return redirect('/');
+        return redirect('/home');
     }
 
 
@@ -59,10 +62,7 @@ class CategoriesController extends Controller
     {
         Category::findOrFail($id)->update($request->all());
         Session::flash('update_category','category updated');
-
         return redirect('/');
-
-
 
     }
 

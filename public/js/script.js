@@ -32,6 +32,10 @@ $category = $("#categories");
 
 $addChannelForm.on("submit", (e) => {
 // $addChannelBtn.on("click", () => {
+    $addChannelBtn.val('loading...');
+    $addChannelBtn.removeClass('btn-primary');
+    $addChannelBtn.removeClass('btn-danger');
+    $addChannelBtn.addClass('btn-success');
     e.preventDefault();
     console.log($ownerName.val());
     console.log($ownerAddress.val());
@@ -49,9 +53,12 @@ $addChannelForm.on("submit", (e) => {
     },(data, status) => {
         if(status == "success" && data == 'valid'){
             console.log('success');
+            $addChannelBtn.val('success');
             window.location.href = "http://localhost:8000/home";
         }else{
-            alert("something went wrong");
+            $addChannelBtn.removeClass('btn-primary');
+            $addChannelBtn.addClass('btn-danger');
+            $addChannelBtn.val('failed, try again');
         }
     });
 });

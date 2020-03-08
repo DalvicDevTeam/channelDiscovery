@@ -113,18 +113,12 @@ class ChannelController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $channel = Channel::findOrFail($id);
         $input = $request->all();
-
-        if ($file = $request->file('photo_id')){
-            $name = time().$file->getClientOriginalName();
-            $file->move('images',$name);
-            $photo = Photo::create(['path'=>$name]);
-
-            $input['photo_id'] = $photo->id;
-        }
-        Auth::user()->channels()->where('id',$id)->first()->update($input);
-        return redirect('tosomething');
-
+        $channel->update($input);
+        echo($id);
+        print_r($input);
+        // return new ChannelResource($channel);
     }
 
     /**

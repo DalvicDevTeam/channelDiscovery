@@ -34,20 +34,16 @@ class HomeController extends Controller
         if($request->input('cat') != null){
             $categories = $request->input('cat');
         }else{
-            $categories = [];
+            $categories = Category::all('id');
         }
         $minrange = $request->input('min_members');
         $maxrange = $request->input('max_members');
-        // print_r($categories);
+        // print($categories);
         $channels = Channel::where('members','>', $minrange)
                     ->Where('members', '<', $maxrange)
-                    ->orwhereIn('category_id', $categories)
+                    ->whereIn('category_id', $categories)
                     ->get();
-<<<<<<< HEAD
-//        echo $channels;
-=======
         // echo $channels;
->>>>>>> f74c95eecf38451f62d1b88305fd6701910c4ed1
         $categories = Category::all();
         return view('home', compact('channels', 'categories'));
     }

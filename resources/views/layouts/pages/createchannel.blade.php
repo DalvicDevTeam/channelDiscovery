@@ -33,7 +33,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <input type="submit" class="btn btn-primary form-control" value="Add">
+                    <input type="submit" class="btn btn-primary form-control" id="add-channel-btn" value="Add">
                 </div>
             </form>
         </div>
